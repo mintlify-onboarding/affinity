@@ -1,0 +1,63 @@
+---
+title: The List Resource
+description: Lists are the primary data structure that you can interact with in Affinity. Each list manages a collection of either people, organizations or opportunities. We call people, organizations and opportunities "entities".
+---
+
+A list in Affinity is easily represented as a spreadsheet. The rows of the spreadsheet are the list entries, and each list entry corresponds to a single person in a list of people, an organization in a list of organizations or an opportunity in a list of opportunities.
+
+Lists in Affinity can also have any number of custom attributes. These attributes allow you to fully customize your workflow and model the data for your use case. We call these attributes "fields", and each fields represents a column in the spreadsheet representation.
+
+As a simple example: A list called "Important People" might have 25 people in it. Two of the columns in the sheet could be "Title" and "Industry".
+
+This list would have 25 "list entries". Each list entry would be associated with a single person entity. Furthermore, the list would have two "fields" with the names "Title" and "Industry".
+
+## List Resource
+
+| Attribute              | Type     | Description                                                                                                                                                                                                                                            |
+|------------------------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| id                     | integer  | The unique identifier of the list object.                                                                                                                                                                                                              |
+| type                   | integer  | The type of the entities (people, organizations, or opportunities) contained within the list. Each list only supports one entity type.                                                                                                                 |
+| name                   | string   | The title of the list that is displayed in Affinity.                                                                                                                                                                                                   |
+| public                 | boolean  | When true, the list is publicly accessible to all users in your Affinity account. When false, the list is private to the list's owner and (explicitly set) additional users.                                                                           |
+| owner_id               | integer  | The unique ID of the internal person who owns the list. See here for permissions held by a list's owner.                                                                                                                                               |
+| creator_id             | integer  | The unique ID of the internal person who created the list. If the list was created via API, this is the internal person corresponding to the API key that was used.                                                                                    |
+| list_size              | integer  | The number of list entries contained within the list.                                                                                                                                                                                                  |
+| additional_permissions | object[] | The list of additional internal persons with permissions on the list. Should be a list of objects with internal_person_id and role_id, where role_id comes from the list-level roles table below. See sample response to the right for expected shape. |
+
+## List Types
+
+| List Type    | Value | Description                              |
+|--------------|-------|------------------------------------------|
+| person       | 0     | Type specifying a list of people.        |
+| organization | 1     | Type specifying a list of organizations. |
+| opportunity  | 8     | Type specifying a list of opportunities. |
+
+
+## List-level Roles
+
+| Role IDs | Description                | 
+|----------|----------------------------|
+| 0        | List-level "Admin" role    |   
+| 1        | List-level "Basic" role    | 
+| 2        | List-level "Standard" role |   
+
+
+<ResponseExample>
+```json Example Response
+{
+  "id": 450,
+  "type": 0,
+  "name": "My List of People",
+  "public": true,
+  "owner_id": 38706,
+  "creator_id": 38901,
+  "list_size": 67,
+  "additional_permissions": [
+    {
+      "internal_person_id": 38706,
+      "role_id": 0
+    }
+  ]
+}
+```
+</ResponseExample>

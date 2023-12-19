@@ -1,0 +1,44 @@
+---
+title: Get All Lists
+description: Returns a collection of all the lists visible to you.
+api: GET https://api.affinity.co/lists
+---
+
+### Parameters
+None
+
+### Returns
+
+An array of all the list resources for lists visible to you. Each list resource in the array includes the `id`, `name`, and `type` (refer to the list resource above for further help).
+
+<RequestExample>
+```bash Example Request
+# Returns an array of all lists that you have access to.
+curl "https://api.affinity.co/lists" -u :$APIKEY
+```
+</RequestExample>
+
+<ResponseExample>
+```json Example Response
+[
+  {
+    "id": 450,
+    "type": 0,
+    "name": "My List of People",
+    "public": true,
+    "owner_id": 38706,
+    "list_size": 67
+  },
+  {
+    "id": 383,
+    "type": 1,
+    "name": "My List of Organizations",
+    "public": true,
+    "owner_id": 38706,
+    "list_size": 50
+  },
+  ...
+]
+```
+</ResponseExample>
+

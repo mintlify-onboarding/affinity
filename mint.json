@@ -1,0 +1,77 @@
+{
+    "name": "Affinity",
+    "logo": {
+      "light": "/logo/light.png",
+      "dark": "/logo/dark.png"
+    },
+    "favicon": "/favicon.png",
+    "colors": {
+      "primary": "#2665F1",
+      "light": "#5181EC",
+      "dark": "#2665F1"
+    },
+    "modeToggle": {
+        "default": "light"
+    },
+    "tabs": [
+        {
+            "name": "API Reference",
+            "url": "api-reference"
+        }
+    ],
+    "api": {
+        "playground": {
+          "mode": "simple"
+        }
+    },
+    "topbarCtaButton": {
+      "name": "Get Started",
+      "url": "https://www.affinity.co/request-a-demo-va"
+    },
+    "topbarLinks": [
+      {
+        "name": "Sign In",
+        "url": "https://login.affinity.co/auth/oauth2/authorize?redirect_uri=https%3A%2F%2Flogin.affinity.co%2Fauth%2Foauth-global-redirect&response_type=code&client_id=global-oauth"
+      }
+    ],
+    "anchors": [
+      {
+        "name": "Help Center",
+        "icon": "block-question",
+        "url": "https://support.affinity.co/hc/en-us?_gl=1*1yt7by6*_ga*NTMxMTI1MTc1LjE3MDI2ODk0ODg.*_ga_SZKKX4MGPV*MTcwMzAyMDYwMy4xLjEuMTcwMzAyMDc3OC4wLjAuMA.."
+      },
+      {
+        "name": "Resource Library",
+        "icon": "books",
+        "url": "https://www.affinity.co/resources"
+      },
+      {
+        "name": "Blog",
+        "icon": "newspaper",
+        "url": "https://www.affinity.co/resources/blog"
+      }
+    ],
+    "navigation": [
+      {
+        "group": "Welcome to Affinity",
+        "pages": [
+            "introduction",
+            "getting-started"
+        ]
+      },
+      {
+        "group": "Lists",
+        "pages": [
+            "api-reference/list/the-list-resource",
+            "api-reference/list/get-all-lists",
+            "api-reference/list/get-a-specific-list",
+            "api-reference/list/create-a-new-list"
+        ]
+      }
+    ],
+    "footerSocials":
+      {
+          "twitter": "https://twitter.com/Affinity",
+          "linkedin": "https://www.linkedin.com/company/project-affinity/"
+      }
+  }

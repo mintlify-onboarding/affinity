@@ -1,0 +1,57 @@
+---
+title: Create a New List
+description: Creates a new list with the supplied parameters.
+api: POST https://api.affinity.co/lists
+---
+
+### Path Parameters
+
+| Parameter              | Type     | Required | Description                                                                                                                                                                                                                                                             |
+|------------------------|----------|----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| name                   | string   | true     | The title of the list that is displayed in Affinity.                                                                                                                                                                                                                    |
+| type                   | integer  | true     | The type of the entities (people, organizations, or opportunities) contained within the list. Each list only supports one entity type.                                                                                                                                  |
+| is_public              | boolean  | true     | Set to true to make the list publicly accessible to all users in your Affinity account. Set to false to make the list private to the list's owner and additional users.                                                                                                 |
+| owner_id               | integer  | false    | The unique ID of the internal person who should own the list. Defaults to the owner of the API key being used. See here for permissions held by a list's owner.                                                                                                         |
+| additional_permissions | object[] | false    | A list of additional internal persons and the permissions they should have on the list. Should be a list of objects with internal_person_id and role_id, where role_id comes from the list-level roles table above. See sample request to the right for expected shape. |
+
+### Returns
+
+The list resource that was just created through this request.
+
+<RequestExample>
+```bash Example Request
+curl -X POST “https://api.affinity.co/lists” \
+   -u :$APIKEY \
+   -H "Content-Type: application/json" \
+   -d '{ "name": "My List of Organizations", "type": 1, "is_public": true, "owner_id": 38706, "additional_permissions": [ {"internal_person_id": 38701, "role_id": 0}, {"internal_person_id": 38703, "role_id": 1}, {"internal_person_id": 38900, "role_id": 0} ]}'
+```
+</RequestExample>
+
+<ResponseExample>
+```json Example Response
+{
+  "id": 383,
+  "type": 1,
+  "name": "My List of Organizations",
+  "public": true,
+  "owner_id": 38706,
+  "creator_id": 38701,
+  "list_size": 0,
+  "additional_permissions": [
+    {
+      "internal_person_id": 38701,
+      "role_id": 0
+    },
+    {
+      "internal_person_id": 38703,
+      "role_id": 1
+    },
+    {
+      "internal_person_id": 38900,
+      "role_id": 0
+    }
+  ]
+}
+```
+</ResponseExample>
+

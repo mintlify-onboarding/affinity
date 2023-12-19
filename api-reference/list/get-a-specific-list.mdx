@@ -1,0 +1,60 @@
+---
+title: Get a Specific Lists
+description: Gets the details for a specific list given the existing list id.
+api: GET https://api.affinity.co/lists/{list_id}
+---
+
+### Path Parameters
+
+| Parameter | Type    | Required | Description                                       |
+|-----------|---------|----------|---------------------------------------------------|
+| list_id   | integer | true     | The unique ID of the list object to be retrieved. |
+
+### Returns
+
+The details of the list resource corresponding to the list ID specified in the path parameter. These details include an array of the fields that are specific to this list. An appropriate error is returned if an invalid list is supplied.
+
+<RequestExample>
+```bash Example Request
+# Returns the list with the specified `list_id`
+curl "https://api.affinity.co/lists/450" -u :$APIKEY
+```
+</RequestExample>
+
+<ResponseExample>
+```json Example Response
+{
+  "id": 450,
+  "type": 0,
+  "name": "My List of People",
+  "public": true,
+  "owner_id": 38706,
+  "list_size": 67
+  "fields": [
+    {
+      "id": 1625,
+      "name": "Status",
+      "value_type": 7,
+      "allows_multiple": false,
+      "dropdown_options": [
+        {
+          "id": 886,
+          "text": "Interested",
+          "rank": 1,
+          "color": 0
+        }
+      ]
+    },
+    {
+      "id": 1626,
+      "name": "Owners",
+      "value_type": 0,
+      "allows_multiple": true,
+      "dropdown_options": [],
+    },
+    ...
+  ]
+}
+```
+</ResponseExample>
+
